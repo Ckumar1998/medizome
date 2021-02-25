@@ -1,0 +1,522 @@
+
+<?php
+  $db = mysqli_connect("localhost", "root", "", "medizome");
+  $msg = "";
+  if (isset($_POST['signin'])) {
+  	$Specialities = mysqli_real_escape_string($db, $_POST['specialities']);
+  	$Doctor = mysqli_real_escape_string($db, $_POST['doctor']);
+    $Fname = mysqli_real_escape_string($db, $_POST['fname']);
+    $lname  = mysqli_real_escape_string($db, $_POST['lname']);
+    $number = mysqli_real_escape_string($db, $_POST['number']);
+    $Email = mysqli_real_escape_string($db, $_POST['email']);
+    $State = mysqli_real_escape_string($db, $_POST['state']);
+    $City = mysqli_real_escape_string($db, $_POST['city']);
+    $time = mysqli_real_escape_string($db, $_POST['time']);
+    $service = mysqli_real_escape_string($db, $_POST['service']);
+
+  	$sql = "INSERT INTO appointment (Specialities , Doctor , fname , laname , number , 	Email ,  State , 	City  ,  time  ,  service) VALUES ('$Specialities', '$Doctor' , '$Fname' , '$lname' , '$number' , '$Email' , '$State'  ,  '$City'  , '$time'  ,  '$service' )";
+  	mysqli_query($db, $sql);
+
+
+  }
+
+?>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/00df3b64a6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<br>
+    <!-- header starts here -->
+    <header>
+        <div class="container">
+            <div class="row ">
+                <div class="col-sm-9 space">
+                    <i style="color: #46ace3;" class="fas fa-phone-alt"></i>&nbsp; <a style="text-decoration: none;" href="" style="padding: 5px;">+ 91 81303 124 15</a>
+                    <i style="color: #46ace3;" class="fas fa-home"></i>&nbsp; <a style="text-decoration: none;" href="" style="padding: 5px;">Arcadia Tower,SouthCity-2 near Sector - 49 ,Gurgaon</a>
+                    <i style="color: #46ace3;" class="fas fa-envelope"></i>&nbsp; <a style="text-decoration: none;" href="" style="padding: 5px;">info@medizome.com</a>
+                </div>
+                <div class="col-sm-3 d-flex justify-content-center">
+                    <i class="fab fa-facebook-f box p-2"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <i class="fab fa-twitter box p-2"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <i class="fab fa-google-plus-g box p-2"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <i class="fab fa-linkedin-in box p-2"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <i class="fab fa-pinterest-p box p-2"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- header ends here -->
+
+
+    <!-- horizontal line need -->
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <hr>
+            </div>
+        </div>
+    </div>
+
+    <!-- horizontal line need -->
+
+
+
+
+    <!-- navbar starts here -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <img style="width: 180px;height: 50px;" src="images/logo.png" alt="">
+            </div>
+            <div class="col-sm-9 d-flex justify-content-start">
+                  <nav class="navbar navbar-light bg-light navbar-expand-lg" id="myNavbar"> 
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                     <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="mainNav">
+                     <ul class="navbar-nav ml-auto nav-fill">                       
+                      <li class="nav-item dropdown">
+                       <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">DIRECTORY</a>
+                       <div style="opacity: 0.9;" class="dropdown-menu dropdown-menu-left" aria-labelledby="servicesDropdown">
+                        <a class="dropdown-item" href="#">What we do</a>
+                        <div class="dropdown-divider"></div>
+                          <div class="d-md-flex align-items-start justify-content-start">
+                            <div class="m-2">   
+                              <div style="color: #46ace3;" class="dropdown-header">ALLOPATHY</div>
+                              <a class="dropdown-item" href="#">Critical care Medicine</a>
+                              <a class="dropdown-item" href="#">General Medicine</a>
+                              <a class="dropdown-item" href="#">geriatrics / Pediatrics</a>
+                              <a class="dropdown-item" href="#">Dental Care</a>
+                              <a class="dropdown-item" href="#">Sports Medicine</a>
+                              <a class="dropdown-item" href="#">Gynacology / Infertility</a>
+                              <a class="dropdown-item" href="#">Orthopediac</a>
+                              <a class="dropdown-item" href="#">Surgery</a>
+                            </div>
+
+                            <div>
+                              <div style="color: #46ace3;" class="dropdown-header">AYURVEDA</div>
+                              <a class="dropdown-item" href="#">Ilakkizhi</a>
+                              <a class="dropdown-item" href="#">Ksheeradhara</a>
+                              <a class="dropdown-item" href="#">Nasya</a>
+                              <a class="dropdown-item" href="#">Podikizhi</a>
+                              <a class="dropdown-item" href="#">Panchakarma</a>
+                              <a class="dropdown-item" href="#">Shirovasti</a>
+                              <a class="dropdown-item" href="#">Shirodhara</a>
+                              <a class="dropdown-item" href="#">Thalam Navarakkizhi</a>
+                            </div>
+
+                            <div>
+                              <div style="color: #46ace3;" class="dropdown-header">ALTERNATIVE</div>
+                              <a class="dropdown-item" href="#">yoga & Massage</a>
+                              <a class="dropdown-item" href="#">Naturopathy</a>
+                              <a class="dropdown-item" href="#">Reiki Therapy</a>
+                              <a class="dropdown-item" href="#">Acupuncture</a>
+                              <a class="dropdown-item" href="#">Reflexology</a>
+                              <a class="dropdown-item" href="#">Aromatherapy</a>
+                              <a class="dropdown-item" href="#">Homeopathy</a>
+                              <a class="dropdown-item" href="#">Holistic Health & Nutrition</a>
+                            </div>                       
+                          </div>
+                       </div>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">HEALTH CART</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">BOOKING</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">MEDICAL TOURISM</a>
+                      <div style="background-color: #31a6dc;" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Treatments</a>
+                        <div class="dropdown-divider bg-warning"></div>
+                        <a class="dropdown-item" href="#">partners</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Packages</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Medical Visa</a>
+                      </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">CARRER CELL</a>
+                      <div style="background-color: #31a6dc;" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Online Courses</a>
+                        <div class="dropdown-divider bg-warning"></div>
+                        <a class="dropdown-item" href="#">Forums</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Webinars</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">E-Magazine</a>
+                      </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">SERVICES</a>
+                      <div style="background-color: #31a6dc;" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Medicolegal Assistance</a>
+                        <div class="dropdown-divider bg-warning"></div>
+                        <a class="dropdown-item" href="#">Ambulance</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Blood Bank</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Home Care</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Insurance</a>
+                      </div>
+                    </li>
+                </ul>
+              </div>
+              </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- navbar ends here -->
+
+
+
+
+
+
+
+    <!-- forms starts here -->
+
+    <div class="container" id="trianglesContainer">
+        <div class="row">
+            <div class="col-sm-3">
+
+            </div>
+            <div class="col-sm-6" class="maindiv" >
+                <h1 class="animation">
+                    Book Appointment
+                  </h1>
+                <br>
+
+
+
+                <form class="form1" method="POST" action="appointment.php"  >
+                    <br>
+                    <div class="form-row">
+                        <div class="form-group col-sm-4 text-center">
+                            <label for="inputState">Specialities</label>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <select id="inputState" class="form-control" name="specialities">
+                              <option selected>Choose...</option>
+                              <option>cardiac</option>
+                              <option>Heart</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-sm-4 text-center">
+                            <label for="inputState">Doctor</label>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <select id="inputState" class="form-control" name="doctor">
+                              <option selected>Choose...</option>
+                              <option>Dr.Nibin</option>
+                              <option>Dr.Bobby</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-sm-4 text-center">
+                            <label for="inputCity">First Name</label>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <input type="text" class="form-control inp" id="inputCity" name="fname">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-sm-4 text-center">
+                            <label for="inputCity">Last Name</label>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <input type="text" class="form-control" id="inputCity" name="lname">
+                        </div>
+                    </div>
+
+
+                    <div class="form-row">
+                        <div class="form-group col-sm-4 text-center">
+                            <label for="inputCity">Mobile Number</label>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <input type="text" class="form-control" id="inputCity" name="number">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-sm-4 text-center">
+                            <label for="inputCity">Email</label>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <input type="text" class="form-control" id="inputCity" name="email">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-sm-4 text-center">
+                            <label for="inputCity">State</label>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <input type="text" class="form-control" id="inputCity" name="state">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-sm-4 text-center">
+                            <label for="inputCity">City</label>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <input type="text" class="form-control" id="inputCity" name="city">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-sm-4 text-center">
+                            <label for="inputState">Time Slot</label>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <select id="inputState" class="form-control" name="time">
+                              <option selected>Choose...</option>
+                              <option>09.00 AM</option>
+                              <option>10.00 AM</option>
+                              <option>11.00 AM</option>
+                              <option>12.00 PM</option>
+                              <option>01.00 PM</option>
+                              <option>02.00 PM</option>
+                              <option>03.00 PM</option>
+                              <option>04.00 PM</option>
+                              <option>05.00 PM</option>                           
+                            </select>
+                        </div>
+                    </div>
+
+
+                    
+                    <div class="form-row">
+                        <div class="form-group col-sm-4 text-center">
+                            <label for="inputState">Services</label>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <select id="inputState" class="form-control" name="service">
+                              <option selected>Choose...</option>
+                              <option>Rooms</option>
+                              <option>Travel</option>
+                              <option>Food</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="form-row">
+                        <div class="form-group col-sm-12 text-center">
+                            <button type="submit" class="btn btn-primary" name="signin">Sign in</button>
+                        </div>
+                    </div>
+
+
+                </form>
+
+
+
+
+                  <br><br><br>
+               
+            </div>
+            <div class="col-sm-3">
+
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- forms ends here -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <!-- footer starts here -->
+
+      <footer  class="container">
+        <div class="row">
+            <div class="col-sm-4" >
+                <h3>About Us</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+            </div>
+            <div class="col-sm-4" >
+                <h3>Contact Us</h3>
+                <ul class="list-unstyled">
+                    <li><a><span class="fa fa-map-marker"></span><span> </span> Sector 49,Gurugaon,haryana</a></li>
+                    <li><a href="mailto:dreamdmvpa@gmail.com"><span class="fa fa-envelope"></span> <span> </span> medizome@gmail.com</a></li>
+                </ul>                    
+            </div>
+            <div class="col-sm-4" >
+                <h3>Connect with us</h3>
+                <a href="" class="fab fa-facebook-f" style="padding: 5px;"></a>
+                <a href="" class="fab fa-instagram-square" style="padding: 5px;"></a>
+                <a href="" class="fab fa-twitter-square" style="padding: 5px;"></a>
+                <a href="" class="fab fa-youtube" style="padding: 5px;"></a>
+                <a href="" class="fab fa-linkedin-in" style="padding: 5px;"></a>
+            </div>
+        </div>
+</footer>
+
+<!-- footer ends here -->
+
+
+
+<script>
+    var spanText = function spanText(text) {
+  var string = text.innerText;
+  var spaned = '';
+  for (var i = 0; i < string.length; i++) {
+    if(string.substring(i, i + 1) === ' ') spaned += string.substring(i, i + 1);
+    else spaned += '<span>' + string.substring(i, i + 1) + '</span>';
+  }
+  text.innerHTML = spaned;
+}
+
+var headline = document.querySelector("h1");
+
+spanText(headline);
+
+let animations = document.querySelectorAll('.animation');
+
+animations.forEach(animation => {
+  let letters = animation.querySelectorAll('span');
+  letters.forEach((letter, i) => {
+    letter.style.animationDelay = (i * 0.1) + 's';
+  })
+})
+</script>
+
+
+
+<script>
+    var 
+axe = "X", // values can be "X" or "Y"
+numberOfSquare = 15, // How many square on the axe
+greyMinimum = 210, // Between 0 and 254
+greyMaximum = 245, // Between 1 and 255
+animMin = 2, // Animation durations (in seconds)
+animMax = 8;
+
+
+// The container in the HTML page
+var $tc = $("#trianglesContainer"); 
+
+function createTriangles(){
+  let w = $tc.width(), h = $tc.height(), dx;
+  let $svg = $('<svg width="'+w+'" height="'+h+'" xmlns="http://www.w3.org/2000/svg">');
+  
+  // Empty the container (usefull for the page resized calls)
+  $tc[0].innerHTML = "";
+  
+  if(axe = "X")
+    dx = w / numberOfSquare;
+  else 
+    dx = h / numberOfSquare;
+  
+  
+  for(let i = 0; i < w / dx ; i++) {
+    for(let j = 0; j < h/dx ; j++) {
+      // Random Colors for animation
+      let c1 = rdmColor(greyMinimum,greyMaximum);
+      let c2 = rdmColor(greyMinimum,greyMaximum);
+      
+      // Path direction for each triangles in a square
+      let d = [];
+      // Middle of the current square, to make triangles from a square
+      let middleX = (i*dx+dx/2), middleY = (j*dx+dx/2);
+      
+      // Creating the 4 paths directions
+      d.push('M '+i*dx+' '+j*dx+' h '+dx+ ' L '+middleX+' '+middleY);
+      d.push('M '+i*dx+' '+(j+1)*dx+' h '+dx+ ' L '+middleX+' '+middleY);
+      d.push('M '+i*dx+' '+j*dx+' v '+dx+ ' L '+middleX+' '+middleY);
+      d.push('M '+(i+1)*dx+' '+j*dx+' v '+dx+ ' L '+middleX+' '+middleY);
+      
+      d.forEach(function(val,i){
+        // Animate tag
+        let a = '<animate attributeName="fill" repeatCount="indefinite" dur="'+rdmInt(animMin,animMax)+'s" values="'+c1+';'+c2+';'+c1+'" />';
+        // Adding the animated path to the SVG container
+        $svg[0].innerHTML += ('<path d="'+val+'" fill="'+c1+'" stroke="'+c1+'">'+a+'</path>');
+      });
+      
+      // Puttin the SVG container in the HTML page
+      $tc.append($svg);
+    }
+  }
+  // For Loops end
+  
+}
+
+
+
+// Random int between min and max
+function rdmInt(min, max) {
+  return Math.round(Math.random() * (max - min) + min)
+}
+
+// Random RGB grey between min and max values (from 0 to 255)
+function rdmColor(min, max) {
+  let color = rdmInt(min,max);
+  return 'rgb('+color+','+color+','+color+')';
+}
+
+// Create Triangle when the page is loaded
+window.onload = createTriangles();
+
+// Recreatee Triangles when the page is resized
+$( window ).resize(createTriangles);
+</script>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+</body>
+</html>
